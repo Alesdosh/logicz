@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { memo } from "react";
 
-function LedPrueba(){
+function Led(){
 
      const [input1, setInput1] = useState(false) // handle a
 
@@ -72,4 +72,4 @@ function LedPrueba(){
 
 }
 
-export default memo(LedPrueba)
+export default memo(Led)

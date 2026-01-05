@@ -1,51 +1,23 @@
-import { useEffect, useState, useCallback, useRef } from "react"
+import { useEffect, useState, useCallback, useRef, useContext} from "react"
 import { Checkbox } from "@headlessui/react"
 import { useDraggable } from "@neodrag/react"
 
 import { useReactFlow } from "@xyflow/react"
 
-import { useConfig } from "../../global/Global"
+import { useConfig } from "../../../global/Global"
+import { globalContext } from "../../context/globalContext"
 
-import { Panel } from "@xyflow/react"
+import { Node } from "../Node"
 
 let id = 0;
 
 const getId = () => `n${id++}`
 
-function Nodo({className, children, nodeType, onDrop}){
-      const draggableRef = useRef(null);
-      const [position, setPosition] = useState({ x: 0, y: 0 });
-
-       useDraggable(draggableRef, { // MENEJA DRAGEO
-    position: position,
-    onDrag: ({ offsetX, offsetY }) => {
-      // Calculate position relative to the viewport
-      setPosition({
-        x: offsetX,
-        y: offsetY,
-      });
-    },
-    onDragEnd: ({ event }) => {
-      setPosition({ x: 0, y: 0 });
-      onDrop(nodeType, {
-        x: event.clientX,
-        y: event.clientY,
-      });
-    },
-  });
-
-    return (
-        <div ref={draggableRef}> {/*SEGUN EL NODETYPE, ESTILAR ESTO */}
-            {nodeType == "textUpdater" && (
-                <div className="bg-white border-black border-2 p-3 rounded-t-xl w-10 h-10">
-
-                </div>
-            )}
-        </div>
-    )
-}
 
 export function LateralPanel(){
+
+    const {gates, setGates} = useContext(globalContext);
+
       const { setNodes, screenToFlowPosition } = useReactFlow();
 
       const handleNodeDrop = useCallback( // SI CAMBIAN LOS NODOS O SI SE USA SCREENTOFLOWPOSITION // UN CALLBACK ES UNA FUNCION QUE SE PASARA DESPUES COMO ARGUMENTO
@@ -190,11 +162,27 @@ export function LateralPanel(){
                 <hr className="border-gray-600 w-3/4 mx-auto"/>
 
 
-                <Nodo nodeType="textUpdater" className="textUpdater" onDrop={handleNodeDrop}>
-                        <div className="">
-                            olax
+                <div className="mx-auto w-11/12 flex flex-col items-center m-1 max-h-[75vh] overflow-y-auto overflow-x-hidden">
+
+                        
+
+                    {gates.map((item, index) => (
+                        <div className="mx-auto  w-3/4 min-h-[14rem] flex flex-col space-y-5 items-center justify-center rounded-xl shadow-lg m-2 bg-white" key={index}>
+                            <h2 className="font-semibold text-xl">{item}</h2>
+                            <Node nodeType={item} className={item} onDrop={handleNodeDrop} />
+                        
                         </div>
-                    </Nodo>
+                    ))}
+
+
+
+
+
+
+
+
+                </div>
+
         </div>  
     )
 

@@ -1,11 +1,11 @@
 import { Handle, Position, useNodeConnections, useConnection, useEdges, useNodeId, reconnectEdge } from "@xyflow/react";
 import { useEffect, useRef, useState } from "react";
-import { globalContext } from "../context/globalContext";
+import { globalContext } from "../../context/globalContext";
 import { useContext } from "react";
 
 import { memo } from "react";
 
-function CustomPrueba(props) {
+function AndGate(props) {
 
     const { edges, setEdges } = useContext(globalContext);
 
@@ -177,4 +177,4 @@ function CustomPrueba(props) {
   );
 }
 
-export default memo(CustomPrueba)
+export default memo(AndGate)

@@ -1,11 +1,11 @@
 import { Handle, Position, useEdges, useNodeId } from "@xyflow/react";
 import { useContext, useEffect, useRef, useState } from "react";
-import { globalContext } from "../context/globalContext";
+import { globalContext } from "../../context/globalContext";
 import { reconnectEdge } from "@xyflow/react";
 import { memo } from "react";
 
 
-function BotonPrueba() { 
+function Button() { 
   const { edges, setEdges } = useContext(globalContext);
 
   const nodeId = useNodeId()
@@ -161,4 +161,4 @@ function BotonPrueba() {
   );
 }
 
-export default memo(BotonPrueba)
+export default memo(Button)

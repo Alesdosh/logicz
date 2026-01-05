@@ -3,11 +3,11 @@ import { ReactFlow, applyNodeChanges, applyEdgeChanges, addEdge, reconnectEdge }
 import { Background, Controls, MiniMap } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 
-import { LateralPanel } from '../components/LateralPanel';
+import { LateralPanel } from '../components/Lateral/LateralPanel';
 
-import CustomPrueba from '../components/CustomPrueba';
-import LedPrueba  from '../components/LedPrueba';
-import BotonPrueba from '../components/BotonPrueba';
+import AndGate from '../components/Gates/AndGate';
+import Led  from '../components/IO/Led';
+import Button from '../components/IO/Button';
 
 import { globalContext } from '../context/globalContext';
 
@@ -19,9 +19,9 @@ import { useConfig } from '../../global/Global';
 export function Principal(){
 
   const nodeTypes = useMemo(() => ({
-   textUpdater: CustomPrueba,
-  botonType: BotonPrueba,
-  ledType: LedPrueba,
+   andGate: AndGate,
+  botonType: Button,
+  ledType: Led,
 }), []);
 
     const {mode} = useConfig()
