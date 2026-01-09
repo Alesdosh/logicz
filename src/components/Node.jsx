@@ -25,15 +25,25 @@ export function Node({className, children, nodeType, onDrop}){
   });
 
     return (
-        <div ref={draggableRef}> {/*SEGUN EL NODETYPE, ESTILAR ESTO */}
+        <div ref={draggableRef} className="z-auto"> {/*SEGUN EL NODETYPE, ESTILAR ESTO, LOGRAR QUE EL NODO DRAGEADO, SE VEA POR ENCIMA EN EL CANVAS */}
             {nodeType == "andGate" && (
-                <div className="bg-white border-black border-[2.5px] p-3 rounded-t-3xl w-24 h-24 cursor-grab">
+                <div className="bg-white border-black border-[2.5px] p-3 rounded-t-3xl w-20 h-20 cursor-grab z-50">
 
                 </div>
             )}
             {nodeType == "notGate" && (
-              <div class="w-16 h-16 border-b-30 border-l-30 border-solid border-black">
+              <div class="w-0 h-0 border-2 border-black border-l-[50px] border-r-[50px] border-b-[calc(50px * 1.5)]">
                     <div class="h-16 w-16 border-t-30 border-r-30 bg-transparent"></div>
+                </div>   
+            )}
+            {nodeType == "button" && (
+              <div class="bg-white border-black border-2 p-3 rounded-full w-10 h-10 cursor-grab">
+                     
+                </div>   
+            )}
+            {nodeType == "led" && (
+              <div class="bg-white border-black border-2 p-3 rounded-t-xl w-7 h-10 cursor-grab">
+                     
                 </div>   
             )}
         </div>

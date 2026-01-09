@@ -20,8 +20,8 @@ export function Principal(){
 
   const nodeTypes = useMemo(() => ({
    andGate: AndGate,
-  botonType: Button,
-  ledType: Led,
+  button: Button,
+  led: Led,
 }), []);
 
     const {mode} = useConfig()

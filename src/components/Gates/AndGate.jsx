@@ -5,7 +5,7 @@ import { useContext } from "react";
 
 import { memo } from "react";
 
-function AndGate(props) {
+function AndGate() {
 
     const { edges, setEdges } = useContext(globalContext);
 
