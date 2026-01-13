@@ -9,8 +9,10 @@ export function ComponenteGlobal({ children }) {
     const [edges, setEdges, onEdgesChange] = useEdgesState([])
     const [nodes, setNodes, onNodesChange] = useNodesState([]);
     const [nodoSeleccionado, setNodoSeleccionado] = useState({})
-    const [gates, setGates] = useState(["andGate", "notGate", "orGate"])
+    const [rfInstance, setRfInstance] = useState(null);
+    const [gates, setGates] = useState(["andGate", "notGate", "orGate", "nandGate"])
     const [io, setIo] = useState(["button", "led"])
+
 
     return (
         <globalContext.Provider 
@@ -19,7 +21,8 @@ export function ComponenteGlobal({ children }) {
                 nodes, setNodes, onNodesChange,
                 nodoSeleccionado, setNodoSeleccionado,
                 gates, setGates,
-                io, setIo
+                io, setIo,
+                rfInstance, setRfInstance
             }}
         >
             {children}

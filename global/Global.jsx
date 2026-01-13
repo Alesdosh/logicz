@@ -9,7 +9,21 @@ export const useEdgesZ = create((set) => ({
 }))
 
 export const useConfig = create((set) => ({
-    mode: "light",
+    mode: "dark",
     update: (newA, nombre) => set((state) => ({ ...state, [nombre]: newA }))
     
 }))
+
+
+export const useModal = create((set) => ({
+     open: false,
+     type: null,
+    update: (newA, nombre) => set((state) => ({ ...state, [nombre]: newA })),
+    onOpenModal: (typ) => {
+        update(true, "open")
+        update(typ, "type")
+    },
+    onCloseModal: () => {
+        update(false, "open")
+    }
+})) 

@@ -9,7 +9,7 @@ import { Node } from "../Node"
 
 import { Config } from "./Config"
 
-let id = 0;
+let id = 1;
 
 const getId = () => `n${id++}`
 
@@ -39,7 +39,7 @@ function Io({io, handleNodeDrop}){
 }   
 
 
-export function LateralPanel(){
+export function LateralPanel({onSave, onRestore}){
 
     const {gates, setGates, io, setIo} = useContext(globalContext);
 
@@ -182,7 +182,7 @@ export function LateralPanel(){
                         <Io io={io} handleNodeDrop={handleNodeDrop}></Io>
                     )}
                     {paginas.config && (
-                        <Config></Config>
+                        <Config onSave={onSave} onRestore={onRestore}></Config>
                     )}
 
 
